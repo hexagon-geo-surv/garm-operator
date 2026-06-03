@@ -440,6 +440,15 @@ func (r *PoolReconciler) fetchGitHubScopeCRD(ctx context.Context, pool *garmoper
 		return nil, fmt.Errorf("unsupported GitHubScopeRef kind: %s", pool.Spec.GitHubScopeRef.Kind)
 	}
 
+	fmt.Printf("fetched GitHubScopeRef: %v\n", gitHubScope)
+
+	gvk, err := r.GroupVersionKindFor(gitHubScope)
+	if err != nil {
+		return nil, err
+	}
+
+	fmt.Printf("GVK: %v\n", gvk)
+
 	return gitHubScope.(garmoperatorv1beta1.GitHubScope), nil
 }
 

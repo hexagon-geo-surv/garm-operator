@@ -1855,6 +1855,9 @@ func TestPoolController_ReconcileDelete(t *testing.T) {
 			// empty resource version to avoid comparison errors
 			pool.ResourceVersion = ""
 			pool.Spec.GitHubScopeRef.APIGroup = nil
+			// TypeMeta is stripped by the fake client (and real API server) after write operations
+			pool.TypeMeta = metav1.TypeMeta{}
+			tt.expectedObject.TypeMeta = metav1.TypeMeta{}
 			conditions.NilLastTransitionTime(pool)
 			conditions.NilLastTransitionTime(tt.expectedObject)
 

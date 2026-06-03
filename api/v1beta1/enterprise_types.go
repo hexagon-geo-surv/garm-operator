@@ -105,7 +105,7 @@ func (e *Enterprise) GetPoolManagerFailureReason() string {
 }
 
 func (e *Enterprise) GetKind() string {
-	return e.Kind
+	return string(EnterpriseScope)
 }
 
 //+kubebuilder:object:root=true

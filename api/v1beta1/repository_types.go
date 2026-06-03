@@ -106,7 +106,7 @@ func (r *Repository) GetPoolManagerFailureReason() string {
 }
 
 func (r *Repository) GetKind() string {
-	return r.Kind
+	return string(RepositoryScope)
 }
 
 //+kubebuilder:object:root=true
